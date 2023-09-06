@@ -1,5 +1,4 @@
 # CV-Projects
-This repository has been created for potential employers to be able to view my projects and its code. 
 
 Currently I have 2 projects: 
   
