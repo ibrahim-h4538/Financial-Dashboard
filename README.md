@@ -7,3 +7,10 @@ Currently I have 2 projects:
 
 
   2) 
+
+
+
+
+
+
+[View Large File](ibrahim-h4538/CV-Projects/FINANCIALDASHBOARD.md)
