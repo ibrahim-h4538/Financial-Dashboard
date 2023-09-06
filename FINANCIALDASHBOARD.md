@@ -1,4 +1,4 @@
-# Financial-Dashboard
+# Financial Dashboard
 
 ## Overview
 This Financial Dashboard is a web-based application built using Python and Flask. It enables users to visualize financial data trends over time and interactively input new financial data points.
