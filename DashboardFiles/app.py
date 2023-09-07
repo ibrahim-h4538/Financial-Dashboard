@@ -42,6 +42,8 @@ def dashboard():
     
     if request.args.get('error'):
         error_message = "Date must be after the previous data."
+        last_added_date = data['Date'].max().strftime('%d %B %Y')  # Format the date as day month year
+        return render_template('dashboard.html', chart_url=chart_url, error_message=error_message, last_added_date=last_added_date)
     
     return render_template('dashboard.html', chart_url=chart_url, error_message=error_message)
 
@@ -53,21 +55,21 @@ def input_form():
         revenue = float(request.form['revenue'])
         expenses = float(request.form['expenses'])
         
-        # Convert the entered date to a datetime object
+        # Converts the entered date to a datetime object
         entered_date = datetime.strptime(date_str, '%Y-%m-%d')
         
-        # Check if the entered date is earlier than the latest date in the existing data
+        # Checks if the entered date is earlier than the latest date in the existing data
         latest_date = data['Date'].max()
         if entered_date < latest_date:
             return redirect(url_for('dashboard', error=True))
         
-        # Append the data to the CSV file
+        # Appends the data to the CSV file
         with open('financial_data.csv', mode='a', newline='') as csv_file:
             writer = csv.writer(csv_file)
             # Write the data as a new row in the CSV file
             writer.writerow([date_str, revenue, expenses, revenue - expenses])
         
-        # Reload the financial data
+        # Reloads the financial data
         load_data()
         
         # Redirect to the dashboard

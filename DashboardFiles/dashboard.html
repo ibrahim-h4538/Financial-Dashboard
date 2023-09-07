@@ -5,10 +5,28 @@
 </head>
 <body>
     <h1>Financial Dashboard</h1>
-    
+
     <!-- Display the chart using an <img> tag -->
     <img src="data:image/png;base64,{{ chart_url }}" alt="Revenue Chart">
+
+    <h2>Add Data</h2>
+
+    <!-- Display the error message and last added date if they exist -->
+    {% if error_message %}
+    <p style="color: red;">{{ error_message }} (Last Added Date: {{ last_added_date }})</p>
+    {% endif %}
     
-    <!-- You can add more interactive features and controls here -->
+    <form method="POST" action="/input">
+        <label for="date">Date:</label>
+        <input type="date" name="date" required><br><br>
+
+        <label for="revenue">Revenue:</label>
+        <input type="number" name="revenue" required><br><br>
+
+        <label for="expenses">Expenses:</label>
+        <input type="number" name="expenses" required><br><br>
+
+        <button type="submit">Add Data</button>
+    </form>
 </body>
 </html>
